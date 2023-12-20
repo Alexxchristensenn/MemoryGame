@@ -3,7 +3,9 @@ package edu.wm.cs.cs301.guimemorygame.view;
 import edu.wm.cs.cs301.guimemorygame.model.Difficulty;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
@@ -29,16 +31,20 @@ public class MemoryGameFrame {
 	private final MemoryGameModel model;
 
 	private final MemoryGamePanel memoryGamePanel;
+	
+	private final JLabel turnLabel;
 
 	public MemoryGameFrame(MemoryGameModel model) {
 		this.model = model;
 		this.memoryGamePanel = new MemoryGamePanel(this, model, 300);
+		this.turnLabel = createTurnLabel();
 		this.frame = createAndShowGUI();
 	}
 
 	private JFrame createAndShowGUI() {
 		JFrame frame = new JFrame("Memory Game");
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		frame.getRootPane().setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
 		frame.setJMenuBar(createMenuBar());
 		frame.setResizable(false);
 		frame.addWindowListener(new WindowAdapter() {
@@ -49,7 +55,8 @@ public class MemoryGameFrame {
 		});
 
 		frame.add(createTitlePanel(), BorderLayout.NORTH);
-		frame.add(memoryGamePanel, BorderLayout.SOUTH);
+		frame.add(memoryGamePanel, BorderLayout.CENTER);
+		frame.add(turnLabel, BorderLayout.SOUTH);
 
 		frame.pack();
 		frame.setLocationByPlatform(true);
@@ -58,6 +65,18 @@ public class MemoryGameFrame {
 		System.out.println("Frame size: " + frame.getSize());
 
 		return frame;
+	}
+	
+	private JLabel createTurnLabel() {
+		JLabel label = new JLabel("Turns: " + model.getTurnCount());
+		label.setFont(new Font("Helvetica", Font.BOLD, 20));
+		label.setForeground(Color.BLACK);
+		label.setHorizontalAlignment(JLabel.CENTER);
+		return label;
+	}
+	
+	public void updateTurnLabel() {
+		turnLabel.setText("Turns: " + model.getTurnCount());
 	}
 
 	private JMenuBar createMenuBar() {
