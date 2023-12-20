@@ -9,7 +9,7 @@ import edu.wm.cs.cs301.guimemorygame.view.MemoryGameFrame;
 
 public class GUIMemoryGame implements Runnable {
 
-	public static void main(String[] args) {
+	public static		 void main(String[] args) {
 		SwingUtilities.invokeLater(new GUIMemoryGame());
 
 		// use cross-platform look and feel so button backgrounds work on Mac

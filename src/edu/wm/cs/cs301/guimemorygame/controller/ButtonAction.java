@@ -30,7 +30,7 @@ public class ButtonAction extends AbstractAction {
 
 	@Override
 	public void actionPerformed(ActionEvent event) {
-		if (processingClick) {
+		if (processingClick || secondFlip && (MemoryGameButton) event.getSource() == button1) {
 			return;
 		}
 		MemoryGameButton button = (MemoryGameButton) event.getSource();
@@ -60,7 +60,10 @@ public class ButtonAction extends AbstractAction {
 					    public void actionPerformed(ActionEvent arg0) {            
 					        button1.setFaceDown();
 					        button2.setFaceDown();
+					        button1.setEnabled(true);
+					        button2.setEnabled(true);
 					        model.incrementTurnCount();
+					        System.out.println("Turn count: " + model.getTurnCount());
 					        processingClick = false;
 					    }
 					});
