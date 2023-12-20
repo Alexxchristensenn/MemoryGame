@@ -22,13 +22,10 @@ public class MemoryGamePanel extends JPanel {
 		this.action = new ButtonAction(memoryGameFrame, model);
 		setLayout(new GridLayout(model.getRows(), model.getCols(), 10, 10));
 		setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-		buttons = new MemoryGameButton[model.getRows()][model.getCols()];
-		char[] alphabet = model.getAlphabet();
-		int c = 0;
+		buttons = model.getBoard();
 
 		for (int i = 0; i < model.getRows(); i++) {
             for (int j = 0; j < model.getCols(); j++) {
-            	buttons[i][j] = new MemoryGameButton(alphabet[c]);
                 buttons[i][j].setPreferredSize(new Dimension(80, 80));
                 buttons[i][j].setMargin(new Insets(10, 10, 10, 10));
                 buttons[i][j].addActionListener(this.action);
@@ -36,7 +33,6 @@ public class MemoryGamePanel extends JPanel {
                 buttons[i][j].setForeground(Color.darkGray);
 
                 add(buttons[i][j]);
-                c++;
             }
 		}
 		
