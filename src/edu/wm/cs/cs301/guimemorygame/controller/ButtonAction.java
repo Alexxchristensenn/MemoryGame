@@ -64,7 +64,6 @@ public class ButtonAction extends AbstractAction {
 					        button2.setEnabled(true);
 					        model.incrementTurnCount();
 					        view.updateTurnLabel();
-					        System.out.println("Turn count: " + model.getTurnCount());
 					        processingClick = false;
 					    }
 					});

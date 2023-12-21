@@ -1,6 +1,8 @@
 package edu.wm.cs.cs301.guimemorygame.view;
 
 import edu.wm.cs.cs301.guimemorygame.model.Difficulty;
+import edu.wm.cs.cs301.guimemorygame.model.EasyMemoryGameModel;
+import edu.wm.cs.cs301.guimemorygame.model.HardMemoryGameModel;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -170,8 +172,13 @@ public class MemoryGameFrame {
 		private void startNewGame(Difficulty difficulty) {
 			// model.getStatistics().writeStatistics();
 			frame.dispose();
-			// model.reset(difficulty);
-			new MemoryGameFrame(model);
+			if (difficulty == Difficulty.EASY) {
+				new MemoryGameFrame(new EasyMemoryGameModel());
+			} else if (difficulty == Difficulty.HARD) {
+				new MemoryGameFrame(new HardMemoryGameModel());
+			} else {
+				new MemoryGameFrame(new MemoryGameModel());
+			}
 		}
 	}
 
