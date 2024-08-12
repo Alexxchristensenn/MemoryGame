@@ -47,9 +47,8 @@ public class ButtonAction extends AbstractAction {
 					button1.setEnabled(false);
 					button2.setEnabled(false);
 					if (view.isWon()) {
-						// Insert Win Behavior
+						
 					}
-					// Otherwise wait two seconds before next input
 					secondFlip = false;
 					processingClick = false;
 					break;
