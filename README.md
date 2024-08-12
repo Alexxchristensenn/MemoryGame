@@ -1,1 +1,1 @@
-I intend to apply my 7 slip days to the deadline of this project. I will turn it in by Dec 20th. 
+A simple GUI based memory match program built with Java swing! Includes three difficulty levels and a leaderboard.
